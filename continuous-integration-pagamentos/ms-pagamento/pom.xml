@@ -28,6 +28,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+<!--        <mysql.version>8.0.22</mysql.version>-->
     </properties>
     <dependencies>
         <dependency>
@@ -113,6 +114,18 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version> <!--$NO-MVN-MAN-VER$ -->
             </plugin>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>9.0.0</version> <!-- Certifique-se de usar uma versão compatível -->
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/pagamentos?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
+                    <user>root</user>
+                    <password>admin123</password>
+                </configuration>
+            </plugin>
+
 
         </plugins>
     </build>
