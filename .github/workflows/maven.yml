@@ -17,7 +17,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: admin123
           MYSQL_DATABASE: pagamentos
         ports:
-          - 3306:3308
+          - 3308:3308
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
@@ -39,7 +39,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-
+        
     - name: Wait for MySQL to be ready
       run: |
         for i in `seq 1 30`; do
@@ -50,11 +50,11 @@ jobs:
         
     - name: Build with Maven
       working-directory: ./continuous-integration-pagamentos/ms-pagamento
-      run: mvn clean package
+      run: mvn clean package      
       env:
-        SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3308/pagamentos?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC&useSSL=false
+        SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/pagamentos?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC&useSSL=false
         SPRING_DATASOURCE_USERNAME: root
-        SPRING_DATASOURCE_PASSWORD: admin123
+        SPRING_DATASOURCE_PASSWORD: admin123      
 
 #    - name: Run tests
 #      working-directory: ./continuous-integration-pagamentos/ms-pagamento
