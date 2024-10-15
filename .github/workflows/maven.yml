@@ -28,7 +28,7 @@ jobs:
         
     - name: Build with Maven
       working-directory: ./continuous-integration-pagamentos/ms-pagamento
-      run: mvn -B package --file pom.xml
+      run: mvn clean package
 
     - name: Docker Compose Build
       working-directory: ./continuous-integration-pagamentos
