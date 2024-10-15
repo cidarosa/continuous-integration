@@ -28,7 +28,7 @@ jobs:
         
     - name: Build with Maven
       working-directory: ./continuous-integration-pagamentos/ms-pagamento
-      run: mvn -B package --file
+      run: mvn -B package --file pom.xml
 
     - name: Run tests
       working-directory: ./continuous-integration-pagamentos/ms-pagamento
