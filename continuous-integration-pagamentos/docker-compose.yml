@@ -42,7 +42,7 @@ services:
 #      TimeZone
       TZ: America/Sao_Paulo
 #      propriedade do spring - application-dev
-      SPRING.DATASOURCE.URL: jdbc:mysql://dbmysql:3308/pagamentos?createDatabaseIfNotExist=true
+      SPRING.DATASOURCE.URL: jdbc:mysql://dbmysql:3308/pagamentos?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
       SPRING.DATASOURCE.USERNAME: root
       SPRING.DATASOURCE.PASSWORD: admin123
     ports:

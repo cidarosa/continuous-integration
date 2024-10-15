@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-alpine
-#RUN addgroup -S spring && adduser -S spring -G spring
-#USER spring:spring
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
 # endereço para a pasta target
 # .jar é gerado sempre que compilamos o projeto
 ARG JAR_FILE=target/*.jar
