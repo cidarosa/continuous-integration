@@ -17,7 +17,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: admin123
           MYSQL_DATABASE: pagamentos
         ports:
-          - 3308:3308
+          - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
