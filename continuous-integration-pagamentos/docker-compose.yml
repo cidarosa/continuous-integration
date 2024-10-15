@@ -19,6 +19,11 @@ services:
 #      permissão de hosts que podem conectar nessa instância - todos
       MYSQL_ROOT_HOST: '%'
       MYSQL_TCP_PORT: 3308
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD" ]
+      interval: 5s
+      timeout: 10s
+      retries: 3
     ports:
       - "3308:3308"
     expose:
@@ -45,7 +50,8 @@ services:
 #   comando para inicializar a aplicação
     command: mvn spring-boot:run
     depends_on:
-      - dbmysql
+      dbmysql:
+        condition: service_healthy
     networks:
       - fiap-network
 # redes que os serviços vão utilizar
