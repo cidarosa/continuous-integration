@@ -67,8 +67,15 @@ jobs:
     - name: Push to Docker Hub Container Registry
       run: |
         docker tag ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:${{ github.run_id }}
+
         docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:${{ github.run_id }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest      
+
+#      run: |
+#        docker tag ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:${{ github.run_id }}
+#
+#        docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:${{ github.run_id }}
+#        docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest
 
 
     # # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
