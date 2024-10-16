@@ -11,23 +11,23 @@ services:
     environment:
 #      TimeZone
       TZ: America/Sao_Paulo
-      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_ROOT_PASSWORD: root
 #      usuário que quero criar container MySql
       MYSQL_USER: docker
-      MYSQL_PASSWORD: admin123
+      MYSQL_PASSWORD: root
       MYSQL_DATABASE: pagamentos
 #      permissão de hosts que podem conectar nessa instância - todos
       MYSQL_ROOT_HOST: '%'
-      MYSQL_TCP_PORT: 3308
+      MYSQL_TCP_PORT: 3306
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD" ]
       interval: 5s
       timeout: 10s
       retries: 3
     ports:
-      - "3308:3308"
+      - "3306:3306"
     expose:
-      - 3308
+      - 3306
     networks:
       - fiap-network
 
@@ -43,9 +43,9 @@ services:
 #      TimeZone
       TZ: America/Sao_Paulo
 #      propriedade do spring - application-dev
-      SPRING.DATASOURCE.URL: jdbc:mysql://dbmysql:3308/pagamentos?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+      SPRING.DATASOURCE.URL: jdbc:mysql://dbmysql:3306/pagamentos?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
       SPRING.DATASOURCE.USERNAME: root
-      SPRING.DATASOURCE.PASSWORD: admin123
+      SPRING.DATASOURCE.PASSWORD: root
     ports:
       - "8080:8080"
 #   comando para inicializar a aplicação
