@@ -68,7 +68,7 @@ jobs:
       run: |
         docker tag ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:${{ github.run_id }}
 
-        docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento::${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:${{ github.run_id }}
         docker push ${{ secrets.DOCKER_USERNAME }}/ms-pagamento:latest
 
 
